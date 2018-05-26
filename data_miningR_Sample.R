@@ -11,8 +11,6 @@ bwplot(size ~ a1, data=algae,panel=panel.bpplot,
        ,xlab='Algal A1'
        )
 
-
-
 stripplot(season ~ a3|minO2,
           + data=algae[!is.na(algae$mnO2),]
           )
