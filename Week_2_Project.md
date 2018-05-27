@@ -1,21 +1,14 @@
----
-title: "New York City - Map"
-output: html_document
-author: "Michael Garcia"
-date: "May 26, 2018"
-always_allow_html: yes
----
+New York City - Map
+================
+Michael Garcia
+May 26, 2018
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-## Map of New York City - Pfizer World Headquarters
+Map of New York City - Pfizer World Headquarters
+------------------------------------------------
 
 This map includes the marker pointing the location of Pfizer World Headquarters in New York City
 
-
-```{r openmaps_map, echo=TRUE, include=TRUE}
+``` r
 library("leaflet")
 library("lattice")
 
@@ -32,3 +25,5 @@ pfe_map <- pfe_map %>%
              )
 pfe_map
 ```
+
+![](Week_2_Project_files/figure-markdown_github/openmaps_map-1.png)
