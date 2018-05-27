@@ -1,0 +1,34 @@
+---
+title: "New York City - Map"
+output: github_document
+Author: "Michael Garcia"
+Date: "May 26, 2018"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Map of New York City - Pfizer World Headquarters
+
+This map includes the marker pointing the location of Pfizer World Headquarters in New York City
+
+
+```{r openmaps_map, echo=TRUE, include=TRUE}
+library("leaflet")
+library("lattice")
+
+pfe_lat <- 40.7503024
+pfe_lng <- -73.9726573
+
+
+pfe_map <- leaflet() %>% 
+  addTiles()
+
+pfe_map <- pfe_map %>%
+  addMarkers(lat=pfe_lat, lng=pfe_lng, 
+             popup="Pfizer World Headquarters"
+             )
+pfe_map
+
+```
