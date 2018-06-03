@@ -32,7 +32,7 @@ usgeneag <- aggregate(x = usgene$Value
                       ,FUN = mean
                       )
 colnames(usgeneag) <- c("Year","State","Value")
-df <- usgeneag
+df <- usgeneag[which(usgeneag$State == "U.S."),]
 #df <- data.frame(Year = index(usgene), usgene$Value)
 #colnames(df) <- c("Year","Value")
 
@@ -46,9 +46,8 @@ usplot <- df %>%
     mode = 'markers'
           ) %>%
     layout(
-      xaxis = Year, yaxis = Value
+      rangeslider = list(type = "Year")
     )
-
 usplot
 ```
 
