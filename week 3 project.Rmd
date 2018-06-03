@@ -17,7 +17,7 @@ Source: https://www.ers.usda.gov/data-products/adoption-of-genetically-engineere
 library(datasets)
 usgenefile <- paste0(getwd(),"/","alltablesGEcrops.csv")
 usgene <- read.csv(usgenefile)
-head(usgene)
+
 
 ```
 
@@ -25,8 +25,12 @@ head(usgene)
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r plotlyplot,echo=TRUE, include=TRUE}
+df <- data.frame(usgene)
+
+usplot <- plot
+
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
