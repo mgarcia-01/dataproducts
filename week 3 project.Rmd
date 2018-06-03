@@ -22,11 +22,15 @@ usgene$Value <- as.numeric(usgene$Value)
 
 ```
 
+
+
+
+
 ## Including Plots
 
-You can also embed plots, for example:
+Adoption Rate of Genetically Engineered Crops in the U.S.
 
-```{r plotlyplot,echo=TRUE, include=TRUE}
+```{r plotlyplot2,echo=TRUE, include=TRUE}
 usgeneag <- aggregate(x = usgene$Value
                       ,by=list(usgene$Year,usgene$State)
                       ,FUN = mean
@@ -41,14 +45,13 @@ usplot <- df %>%
   plot_ly(
     x = ~Year, 
     y = ~Value,
-    color = ~State,
     type = 'scatter',
     mode = 'markers'
           ) %>%
     layout(
-      rangeslider = list(type = "Year")
+      xaxis = list(
+      rangeslider = list(type = "date")
+      )
     )
 usplot
 ```
-
-
