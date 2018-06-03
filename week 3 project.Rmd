@@ -13,11 +13,12 @@ knitr::opts_chunk$set(echo = TRUE)
 Source: https://www.ers.usda.gov/data-products/adoption-of-genetically-engineered-crops-in-the-us/
 
 
-```{r datasets, echo=TRUE, include=TRUE}
+```{r datasets, echo=TRUE, include=TRUE, warning=FALSE}
 library(datasets)
+library(plotly)
 usgenefile <- paste0(getwd(),"/","alltablesGEcrops.csv")
 usgene <- read.csv(usgenefile)
-
+usgene$Value <- as.numeric(usgene$Value)
 
 ```
 
@@ -26,11 +27,29 @@ usgene <- read.csv(usgenefile)
 You can also embed plots, for example:
 
 ```{r plotlyplot,echo=TRUE, include=TRUE}
-df <- data.frame(usgene)
+usgeneag <- aggregate(x = usgene$Value
+                      ,by=list(usgene$Year,usgene$State)
+                      ,FUN = mean
+                      )
+colnames(usgeneag) <- c("Year","State","Value")
+df <- usgeneag
+#df <- data.frame(Year = index(usgene), usgene$Value)
+#colnames(df) <- c("Year","Value")
 
-usplot <- plot
 
+usplot <- df %>%
+  plot_ly(
+    x = ~Year, 
+    y = ~Value,
+    color = ~State,
+    type = 'scatter',
+    mode = 'markers'
+          ) %>%
+    layout(
+      xaxis = Year, yaxis = Value
+    )
 
+usplot
 ```
 
 
